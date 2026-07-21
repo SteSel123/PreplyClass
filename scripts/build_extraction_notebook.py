@@ -801,9 +801,68 @@ cells.append(code("show_image_sample(artifacts)"))
 cells.append(
     md(
         """
+## Step 8 - Save text artifacts for Notebook 2
+
+**Goal:** Hand off text artifacts to the next lecture notebook (chunking and embeddings).
+
+Notebook 2 reads from `data/extracted/{SOURCE_ID}_text_artifacts.json`. The `SOURCE_ID` must match `ARXIV_ID` from the config cell above.
+"""
+    )
+)
+
+cells.append(
+    code(
+        """
+import json
+
+
+def save_text_artifacts(
+    artifacts: list[ExtractArtifact],
+    source_id: str,
+) -> Path:
+    \"\"\"Save page-level text artifacts as JSON for the transformation notebook.\"\"\"
+    output_dir = get_project_root() / "data" / "extracted"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{source_id}_text_artifacts.json"
+
+    records = []
+    for index, artifact in enumerate(artifacts):
+        if artifact.artifact_kind != "document" or not artifact.text:
+            continue
+        records.append(
+            {
+                "artifact_index": index,
+                "page_number": artifact.page_number,
+                "text": artifact.text,
+                "metadata": artifact.metadata,
+            }
+        )
+
+    payload = {
+        "source_id": source_id,
+        "pdf_path": str(pdf_path),
+        "record_count": len(records),
+        "records": records,
+    }
+    output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"[Save] Wrote {len(records)} text records to {output_path}")
+    return output_path
+
+
+# --- Run Step 8 ---
+saved_path = save_text_artifacts(artifacts, ARXIV_ID)
+"""
+    )
+)
+
+cells.append(
+    md(
+        """
 ---
 
 ## What happens next?
+
+Open **Notebook 2** (`rag-chunking-embeddings-lecture.ipynb`) to run the **Transform** stage: clean text, chunk, and generate embeddings.
 
 Extract is **stage 1** only. The rest of the RAG pipeline:
 

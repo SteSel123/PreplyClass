@@ -39,11 +39,13 @@ env/
 # Data (PDFs are downloaded or added locally during class)
 data/pdfs/*.pdf
 data/extracted/
+data/chroma/
 
 # Environment and secrets
 .env
 .env.local
 .env.*
+!.env.example
 
 # OS and IDE
 .DS_Store
