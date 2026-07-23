@@ -1,0 +1,5 @@
+agno
+tavily-python
+google-genai
+python-dotenv
+pydantic

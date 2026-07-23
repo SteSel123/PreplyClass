@@ -1,0 +1,22 @@
+# Example queries for VortexGear (gaming peripherals)
+# Copy and run any line below.
+
+# --- Pricing & products ---
+python main.py "Compare pricing on flagship gaming mice across Razer, Logitech G, SteelSeries, and Corsair"
+python main.py "What are competitors charging for wireless mechanical keyboards right now?"
+python main.py "Which gaming peripheral brands offer the best value for competitive FPS players?"
+
+# --- Marketing & esports ---
+python main.py "What esports sponsorships or influencer partnerships are our competitors running this year?"
+python main.py "Which gaming gear brands are winning on Twitch and TikTok?"
+python main.py "What product launches or limited editions did Razer, SteelSeries, and HyperX release in the last 6 months?"
+
+# --- Strategy & positioning ---
+python main.py "Where can VortexGear win against Razer, Logitech G, SteelSeries, Corsair, and HyperX?"
+python main.py "How do competitors position wireless vs wired gear — and where is the gap for us?"
+python main.py "Map our top 5 competitors by price and performance positioning in gaming mice"
+
+# --- Quick executive briefs ---
+python main.py "Give me a short competitive brief for our next product planning meeting"
+python main.py "What are the biggest threats and opportunities for VortexGear in PC gaming peripherals?"
+python main.py "Summarize recent competitor moves we should respond to this quarter"
